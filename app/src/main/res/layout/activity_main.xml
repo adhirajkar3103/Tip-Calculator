@@ -21,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="24%"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tipAmount"
-        app:layout_constraintTop_toBottomOf="@+id/baseAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/baseAmount"
+        tools:text="24%" />
 
     <TextView
         android:id="@+id/tipAmount"
@@ -74,19 +74,19 @@
         android:id="@+id/inputTipAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="19.96"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/tipAmount"
         app:layout_constraintStart_toStartOf="@+id/inputTipPerc"
-        app:layout_constraintTop_toTopOf="@+id/tipAmount" />
+        app:layout_constraintTop_toTopOf="@+id/tipAmount"
+        tools:text="19.96" />
 
     <TextView
         android:id="@+id/inputTotalAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="103.11"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/totalAmount"
         app:layout_constraintStart_toStartOf="@+id/inputTipAmount"
-        app:layout_constraintTop_toTopOf="@+id/totalAmount" />
+        app:layout_constraintTop_toTopOf="@+id/totalAmount"
+        tools:text="103.11" />
 </androidx.constraintlayout.widget.ConstraintLayout>
