@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tipPerc : TextView
     private lateinit var inputTipAmount : TextView
     private lateinit var inputTotalAmount : TextView
+    private lateinit var tipDescription : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +28,16 @@ class MainActivity : AppCompatActivity() {
         tipPerc = findViewById(R.id.tipPerc)
         inputTipAmount = findViewById(R.id.inputTipAmount)
         inputTotalAmount = findViewById(R.id.inputTotalAmount)
+        tipDescription = findViewById(R.id.tipDescription)
 
         inputTipPerc.progress = INITIAL_TIP_AMOUNT
         tipPerc.text = "$INITIAL_TIP_AMOUNT %"
+        updateTipDescription(INITIAL_TIP_AMOUNT)
         inputTipPerc.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 tipPerc.text = "$progress %"
                 computeTipAndTotal()
+                updateTipDescription(progress)
             }
             override fun onStartTrackingTouch(seek: SeekBar) {}
             override fun onStopTrackingTouch(seek: SeekBar) {}
@@ -43,11 +47,21 @@ class MainActivity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                Log.i(TAG,"text changed to $s")
                 computeTipAndTotal()
             }
 
         })
+    }
+
+    private fun updateTipDescription(progress : Int) {
+        val tipDesc = when(progress){
+            in 0..9 -> "Poor"
+            in 10..14 -> "Acceptable"
+            in 15..19 -> "Good"
+            in 20..24 -> "Great"
+            else -> "Amazing"
+        }
+        tipDescription.text = tipDesc
     }
 
     private fun computeTipAndTotal() {

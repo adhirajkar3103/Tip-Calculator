@@ -31,7 +31,7 @@
         android:id="@+id/tipAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="56dp"
         android:text="Tip"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/totalAmount"
@@ -61,15 +61,6 @@
         app:layout_constraintStart_toEndOf="@+id/baseAmount"
         app:layout_constraintTop_toTopOf="@+id/baseAmount" />
 
-    <SeekBar
-        android:id="@+id/inputTipPerc"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:max="30"
-        app:layout_constraintBottom_toBottomOf="@+id/tipPerc"
-        app:layout_constraintStart_toStartOf="@+id/inputBaseAmount"
-        app:layout_constraintTop_toTopOf="@+id/tipPerc" />
-
     <TextView
         android:id="@+id/inputTipAmount"
         android:layout_width="wrap_content"
@@ -89,4 +80,39 @@
         app:layout_constraintStart_toStartOf="@+id/inputTipAmount"
         app:layout_constraintTop_toTopOf="@+id/totalAmount"
         tools:text="103.11" />
+
+    <TextView
+        android:id="@+id/madeByText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="175dp"
+        android:layout_marginEnd="178dp"
+        android:layout_marginBottom="32dp"
+        android:text="Made by Adhiraj"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tipDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Acceptable"
+        android:textColor="@color/primary_blue"
+        app:layout_constraintEnd_toEndOf="@+id/inputTipPerc"
+        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintStart_toStartOf="@+id/inputTipPerc"
+        app:layout_constraintTop_toBottomOf="@+id/inputTipPerc" />
+
+    <SeekBar
+        android:id="@+id/inputTipPerc"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:max="30"
+        app:layout_constraintBottom_toBottomOf="@+id/tipPerc"
+        app:layout_constraintStart_toStartOf="@+id/inputBaseAmount"
+        app:layout_constraintTop_toTopOf="@+id/tipPerc"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
