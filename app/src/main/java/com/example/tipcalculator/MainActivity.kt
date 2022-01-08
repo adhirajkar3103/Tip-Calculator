@@ -51,12 +51,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun computeTipAndTotal() {
+        if(inputBaseAmount.text.isNullOrBlank()){
+            inputTipAmount.text = ""
+            inputTotalAmount.text = ""
+            return
+        }
         // get bill amount and seekbar percent
         val baseAmount = inputBaseAmount.text.toString().toDouble()
         val tipPerc = inputTipPerc.progress
         //convert
-        val tipAmt = baseAmount*tipPerc/100
-        val totalAmt = tipAmt + baseAmount
+        val tipAmt = String.format("%.2f",  baseAmount*tipPerc/100).toDouble()
+        val totalAmt =   String.format("%.2f", tipAmt + baseAmount).toDouble()
         //change tip and total textviews
         inputTipAmount.text="$tipAmt"
         inputTotalAmount.text = "$totalAmt"
