@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         inputTipPerc.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seek: SeekBar, progress: Int, fromUser: Boolean) {
                 tipPerc.text = "$progress %"
+                computeTipAndTotal()
             }
             override fun onStartTrackingTouch(seek: SeekBar) {}
             override fun onStopTrackingTouch(seek: SeekBar) {}
@@ -43,8 +44,21 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 Log.i(TAG,"text changed to $s")
+                computeTipAndTotal()
             }
 
         })
+    }
+
+    private fun computeTipAndTotal() {
+        // get bill amount and seekbar percent
+        val baseAmount = inputBaseAmount.text.toString().toDouble()
+        val tipPerc = inputTipPerc.progress
+        //convert
+        val tipAmt = baseAmount*tipPerc/100
+        val totalAmt = tipAmt + baseAmount
+        //change tip and total textviews
+        inputTipAmount.text="$tipAmt"
+        inputTotalAmount.text = "$totalAmt"
     }
 }
